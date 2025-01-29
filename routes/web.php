@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Route;
 // Головна сторінка (відображає всі блоги, випущені сьогодні або раніше)
 Route::get('/', [BlogController::class, 'welcome'])->name('home');
 
-// Ресурси для блогів 
-Route::get('blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
-
-
 // Маршрути для авторизованих і перевірених користувачів
 Route::middleware(['auth'])->group(function () {
 
@@ -38,6 +34,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
 });
+
+// Ресурси для блогів 
+Route::get('blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
 
 // Маршрути для гостей
 Route::middleware('guest')->group(function () {
