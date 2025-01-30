@@ -35,9 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
 });
 
-// Ресурси для блогів 
-Route::get('blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
-
 // Маршрути для гостей
 Route::middleware('guest')->group(function () {
 
@@ -55,6 +52,9 @@ Route::middleware('guest')->group(function () {
     })->name('password.reset');
     Route::post('reset-password', [UserController::class, 'resetPasswordUpdate'])->name('password.update');
 });
+
+// Ресурси для блогів 
+Route::get('blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
 
 // Можливо коментарів для гостей і авторизованих користувачів
 Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->name('comments.store');

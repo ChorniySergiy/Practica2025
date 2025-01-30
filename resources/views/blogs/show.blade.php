@@ -68,7 +68,7 @@
             <input type="email" name="email" id="email" class="form-control" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 0.5em;">
             <label for="content">Комент:</label>
             <textarea name="content" id="content" class="form-control" rows="3" required></textarea>
         </div>
