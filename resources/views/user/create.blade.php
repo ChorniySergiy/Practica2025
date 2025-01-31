@@ -43,7 +43,7 @@
                     id="password_confirmation" placeholder="Confirm Password">
                 </div>
 
-                <button type="submit" class="btn btn-primary"></button>
+                <button type="submit" class="btn btn-primary">Зарегистрирую</button>
                 <a href="{{ route('login') }}" class="ms-3">Ви уже зарегестрирує?</a>
             </form>
 
