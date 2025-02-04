@@ -1,32 +1,32 @@
 <?php $__env->startSection('title', 'Home page'); ?>
 
 <?php $__env->startSection('content'); ?>
-    <h1>Welcome to Our Blog Platform</h1>
+    <h1><?php echo e(__('messages.welcome')); ?></h1>
 
-    <h2>Список Блог</h2>
+    <h2><?php echo e(__('messages.listblog')); ?></h2>
 
     <div class="my-3">
         <form method="GET" action="<?php echo e(route('home')); ?>">
             <div class="row">
                 <div class="col-md-4">
-                    <label for="sortField">Сортувати за:</label>
+                    <label for="sortField"><?php echo e(__('messages.sortby')); ?></label>
                     <select name="sortField" id="sortField" class="form-control">
-                        <option value="title" <?php echo e(request('sortField') == 'title' ? 'selected' : ''); ?>>Назва</option>
-                        <option value="author_id" <?php echo e(request('sortField') == 'author_id' ? 'selected' : ''); ?>>Автор</option>
-                        <option value="publish_date" <?php echo e(request('sortField') == 'publish_date' ? 'selected' : ''); ?>>Дата публікації</option>
+                        <option value="title" <?php echo e(request('sortField') == 'title' ? 'selected' : ''); ?>><?php echo e(__('messages.title')); ?></option>
+                        <option value="author_id" <?php echo e(request('sortField') == 'author_id' ? 'selected' : ''); ?>><?php echo e(__('messages.author')); ?></option>
+                        <option value="publish_date" <?php echo e(request('sortField') == 'publish_date' ? 'selected' : ''); ?>><?php echo e(__('messages.publish_date')); ?></option>
                     </select>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="sortOrder">Напрямок:</label>
+                    <label for="sortOrder"><?php echo e(__('messages.direction')); ?></label>
                     <select name="sortOrder" id="sortOrder" class="form-control">
-                        <option value="asc" <?php echo e(request('sortOrder') == 'asc' ? 'selected' : ''); ?>>За зростанням</option>
-                        <option value="desc" <?php echo e(request('sortOrder') == 'desc' ? 'selected' : ''); ?>>За спаданням</option>
+                        <option value="asc" <?php echo e(request('sortOrder') == 'asc' ? 'selected' : ''); ?>><?php echo e(__('messages.ascending')); ?></option>
+                        <option value="desc" <?php echo e(request('sortOrder') == 'desc' ? 'selected' : ''); ?>><?php echo e(__('messages.descending')); ?></option>
                     </select>
                 </div>
 
                 <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">Сортувати</button>
+                    <button type="submit" class="btn btn-primary w-100"><?php echo e(__('messages.sort')); ?></button>
                 </div>
             </div>
         </form>
@@ -36,10 +36,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Зображення</th>
-                <th>Author</th>
-                <th>Publish Date</th>
+                <th><?php echo e(__('messages.title')); ?></th>
+                <th><?php echo e(__('messages.image')); ?></th>
+                <th><?php echo e(__('messages.author')); ?></th>
+                <th><?php echo e(__('messages.publish_date')); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
                     <?php if($blog->image): ?>
                         <img src="<?php echo e(asset('storage/blog_images/' . $blog->image)); ?>" alt="Зображення" style="width: 100px; height: auto;">
                     <?php else: ?>
-                        <span>Відсутная зображення</span>
+                        <span><?php echo e(__('messages.emplyimage')); ?></span>
                     <?php endif; ?>
                 </td>
                 <td><?php echo e($blog->author->name ?? 'Unknown'); ?></td>

@@ -3,17 +3,19 @@
 <?php $__env->startSection('title', 'Home page'); ?>
 
 <?php $__env->startSection('content'); ?>
-    <p>Welcome, <?php echo e(Auth::user()->name); ?>!</p>
+    <p><?php echo e(__('messages.welcomemy')); ?>, <?php echo e(Auth::user()->name); ?>!</p>
 
-    <h2>Ваш Блоги</h2>
+    <h2><?php echo e(__('messages.yourblogs')); ?></h2>
 
     <div class="mb-3">
         <a href="<?php echo e(route('blogs.create')); ?>" method="get" class="btn btn-primary">
-            Створити нові Блог
+            <?php echo e(__('messages.create_blog')); ?>
+
         </a>
 
         <a href="<?php echo e(route('comments.index')); ?>" method="get" class="btn btn-primary">
-            Список коментарів
+            <?php echo e(__('messages.list_of_comments')); ?>
+
         </a>
     </div>
 
@@ -21,25 +23,25 @@
         <form method="GET" action="<?php echo e(route('dashboard')); ?>">
             <div class="row">
                 <div class="col-md-4">
-                    <label for="sortField">Сортувати за:</label>
+                    <label for="sortField"><?php echo e(__('messages.sortby')); ?></label>
                     <select name="sortField" id="sortField" class="form-control">
-                        <option value="title" <?php echo e(request('sortField') == 'title' ? 'selected' : ''); ?>>Назва</option>
-                        <option value="created_at" <?php echo e(request('sortField') == 'created_at' ? 'selected' : ''); ?>>Дата створення</option>
-                        <option value="updated_at" <?php echo e(request('sortField') == 'updated_at' ? 'selected' : ''); ?>>Дата оновлення</option>
-                        <option value="publish_date" <?php echo e(request('sortField') == 'publish_date' ? 'selected' : ''); ?>>Дата публікації</option>
+                        <option value="title" <?php echo e(request('sortField') == 'title' ? 'selected' : ''); ?>><?php echo e(__('messages.title')); ?></option>
+                        <option value="created_at" <?php echo e(request('sortField') == 'created_at' ? 'selected' : ''); ?>><?php echo e(__('messages.creation_date')); ?>Дата створення</option>
+                        <option value="updated_at" <?php echo e(request('sortField') == 'updated_at' ? 'selected' : ''); ?>><?php echo e(__('messages.update_date')); ?>Дата оновлення</option>
+                        <option value="publish_date" <?php echo e(request('sortField') == 'publish_date' ? 'selected' : ''); ?>><?php echo e(__('messages.publish_date')); ?>Дата публікації</option>
                     </select>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="sortOrder">Напрямок:</label>
+                    <label for="sortOrder"><?php echo e(__('messages.direction')); ?></label>
                     <select name="sortOrder" id="sortOrder" class="form-control">
-                        <option value="asc" <?php echo e(request('sortOrder') == 'asc' ? 'selected' : ''); ?>>За зростанням</option>
-                        <option value="desc" <?php echo e(request('sortOrder') == 'desc' ? 'selected' : ''); ?>>За спаданням</option>
+                        <option value="asc" <?php echo e(request('sortOrder') == 'asc' ? 'selected' : ''); ?>><?php echo e(__('messages.ascending')); ?></option>
+                        <option value="desc" <?php echo e(request('sortOrder') == 'desc' ? 'selected' : ''); ?>><?php echo e(__('messages.descending')); ?></option>
                     </select>
                 </div>
 
                 <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">Сортувати</button>
+                    <button type="submit" class="btn btn-primary w-100"><?php echo e(__('messages.sort')); ?></button>
                 </div>
             </div>
         </form>
@@ -49,13 +51,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Зображення</th>
-                <th>Author</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Publish Date</th>
-                <th>Actions</th>
+                <th><?php echo e(__('messages.title')); ?></th>
+                <th><?php echo e(__('messages.image')); ?></th>
+                <th><?php echo e(__('messages.author')); ?></th>
+                <th><?php echo e(__('messages.creation_date')); ?></th>
+                <th><?php echo e(__('messages.update_date')); ?></th>
+                <th><?php echo e(__('messages.publish_date')); ?></th>
+                <th><?php echo e(__('messages.actions')); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -66,7 +68,7 @@
                         <?php if($blog->image): ?>
                             <img src="<?php echo e(asset('storage/blog_images/' . $blog->image)); ?>" alt="Зображення" style="width: 100px; height: auto;">
                         <?php else: ?>
-                            <span>Відсутная зображення</span>
+                            <span><?php echo e(__('messages.emplyimage')); ?></span>
                         <?php endif; ?>
                     </td>
                     <td><?php echo e($blog->author->name); ?></td>

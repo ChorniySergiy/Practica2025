@@ -8,8 +8,21 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
 // Головна сторінка (відображає всі блоги, випущені сьогодні або раніше)
 Route::get('/', [BlogController::class, 'welcome'])->name('home');
+
+//Мультиязіковий мова
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'uk'])) { // Дозволені мови
+        Session::put('locale', $locale);
+        App::setLocale($locale);
+    }
+    return Redirect::back()->with('message', 'Language changed to ' . $locale); // Повертаємось на попередню сторінку
+})->name('lang.switch');
 
 // Маршрути для авторизованих і перевірених користувачів
 Route::middleware(['auth'])->group(function () {
