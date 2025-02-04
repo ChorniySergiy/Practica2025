@@ -26,32 +26,43 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Головна сторінка</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ __('messages.home') }}</a>
         </li>
         @if (Route::has('login'))
             @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard') }}">Кабінеть</a>
+                    <a class="nav-link" href="{{ route('dashboard') }}">{{ __('messages.dashboard') }}</a>
                 </li>
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}" class="d-inline">
                         @csrf
-                        <button type="submit" class="nav-link btn btn-link">Logout</button>
+                        <button type="submit" class="nav-link btn btn-link">{{ __('messages.logout') }}</button>
                     </form>
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                 </li>
             @endif
         @endif
       </ul>
+
+      <!-- Перемикач мови -->
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
+                {{ __('messages.language') }}
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('lang.switch', 'en') }}">🇬🇧 English</a></li>
+                <li><a class="dropdown-item" href="{{ route('lang.switch', 'uk') }}">🇺🇦 Українська</a></li>
+            </ul>
+        </li>
     </div>
   </div>
-    </nav>
+</nav>
 
     <main class="main my-3">
         <div class="container">

@@ -48,12 +48,11 @@ class BlogController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('blogs', 'public'); // Зберігаємо зображення в storage/app/public/blogs
-            dd([
-                'Original Name' => $file->getClientOriginalName(),
-                'Size' => $file->getSize(),
-                'Path' => $file->getPath(),
-            ]);
+            $file = $request->file('image'); // Оголошуємо змінну $file
+
+            $imageName = $file->hashName(); // Генерує унікальне ім'я
+            $file->storeAs('blog_images', $imageName, 'public'); // Зберігає в storage/app/public/blog_images
+            $imagePath = $imageName; // Зберігаємо лише ім'я файлу
         } else {
             $imagePath = null; // Якщо зображення немає
         }

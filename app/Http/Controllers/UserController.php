@@ -31,7 +31,8 @@ class UserController extends Controller
 
         Auth::login($user);// Тепер фасад Auth розпізнається
 
-        return redirect()->route('verification.notice');
+        //return redirect()->route('verification.notice'); для вертифікація
+        return redirect()->route('dashboard');
     }
 
     public function login()

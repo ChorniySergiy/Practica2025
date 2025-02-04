@@ -3,17 +3,17 @@
 @section('title', 'Home page')
 
 @section('content')
-    <p>Welcome, {{ Auth::user()->name }}!</p>
+    <p>{{ __('messages.welcomemy') }}, {{ Auth::user()->name }}!</p>
 
-    <h2>Ваш Блоги</h2>
+    <h2>{{ __('messages.yourblogs') }}</h2>
 
     <div class="mb-3">
         <a href="{{ route('blogs.create') }}" method="get" class="btn btn-primary">
-            Створити нові Блог
+            {{ __('messages.create_blog') }}
         </a>
 
         <a href="{{ route('comments.index') }}" method="get" class="btn btn-primary">
-            Список коментарів
+            {{ __('messages.list_of_comments') }}
         </a>
     </div>
 
@@ -21,25 +21,25 @@
         <form method="GET" action="{{ route('dashboard') }}">
             <div class="row">
                 <div class="col-md-4">
-                    <label for="sortField">Сортувати за:</label>
+                    <label for="sortField">{{ __('messages.sortby') }}</label>
                     <select name="sortField" id="sortField" class="form-control">
-                        <option value="title" {{ request('sortField') == 'title' ? 'selected' : '' }}>Назва</option>
-                        <option value="created_at" {{ request('sortField') == 'created_at' ? 'selected' : '' }}>Дата створення</option>
-                        <option value="updated_at" {{ request('sortField') == 'updated_at' ? 'selected' : '' }}>Дата оновлення</option>
-                        <option value="publish_date" {{ request('sortField') == 'publish_date' ? 'selected' : '' }}>Дата публікації</option>
+                        <option value="title" {{ request('sortField') == 'title' ? 'selected' : '' }}>{{ __('messages.title') }}</option>
+                        <option value="created_at" {{ request('sortField') == 'created_at' ? 'selected' : '' }}>{{ __('messages.creation_date') }}Дата створення</option>
+                        <option value="updated_at" {{ request('sortField') == 'updated_at' ? 'selected' : '' }}>{{ __('messages.update_date') }}Дата оновлення</option>
+                        <option value="publish_date" {{ request('sortField') == 'publish_date' ? 'selected' : '' }}>{{ __('messages.publish_date') }}Дата публікації</option>
                     </select>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="sortOrder">Напрямок:</label>
+                    <label for="sortOrder">{{ __('messages.direction') }}</label>
                     <select name="sortOrder" id="sortOrder" class="form-control">
-                        <option value="asc" {{ request('sortOrder') == 'asc' ? 'selected' : '' }}>За зростанням</option>
-                        <option value="desc" {{ request('sortOrder') == 'desc' ? 'selected' : '' }}>За спаданням</option>
+                        <option value="asc" {{ request('sortOrder') == 'asc' ? 'selected' : '' }}>{{ __('messages.ascending') }}</option>
+                        <option value="desc" {{ request('sortOrder') == 'desc' ? 'selected' : '' }}>{{ __('messages.descending') }}</option>
                     </select>
                 </div>
 
                 <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">Сортувати</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('messages.sort') }}</button>
                 </div>
             </div>
         </form>
@@ -49,13 +49,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Зображення</th>
-                <th>Author</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Publish Date</th>
-                <th>Actions</th>
+                <th>{{ __('messages.title') }}</th>
+                <th>{{ __('messages.image') }}</th>
+                <th>{{ __('messages.author') }}</th>
+                <th>{{ __('messages.creation_date') }}</th>
+                <th>{{ __('messages.update_date') }}</th>
+                <th>{{ __('messages.publish_date') }}</th>
+                <th>{{ __('messages.actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -66,7 +66,7 @@
                         @if ($blog->image)
                             <img src="{{ asset('storage/blog_images/' . $blog->image) }}" alt="Зображення" style="width: 100px; height: auto;">
                         @else
-                            <span>Відсутная зображення</span>
+                            <span>{{ __('messages.emplyimage') }}</span>
                         @endif
                     </td>
                     <td>{{ $blog->author->name }}</td>
