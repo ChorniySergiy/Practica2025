@@ -3,7 +3,7 @@
 @section('title', 'Home page')
 
 @section('content')
-    <h1>Login page</h1>
+    <h1>{{ __('messages.login_page') }}</h1>
 
     <form action="{{ route('login.auth') }}" method="post">
     @csrf
@@ -15,7 +15,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
+            <label for="password" class="form-label">{{ __('messages.password') }}</label>
             <input name="password" type="password"
             class="form-control"
             id="password" placeholder="Password">
@@ -25,13 +25,13 @@
             <input name="remember" class="form-check-input" 
             type="checkbox" id="remember">
             <label class="form-check-label" for="remember">
-                Remember me
+            {{ __('messages.Запамятати мене') }}
             </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.login_go') }}</button>
         
-        <a href="{{ route('password.request') }}" class="ms-2">Forgot password</a>
+        <a href="{{ route('password.request') }}" class="ms-2">{{ __('messages.forgot_password') }}</a>
 
     </form>
 

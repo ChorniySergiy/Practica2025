@@ -3,7 +3,7 @@
 @section('title', 'Home page')
 
 @section('content')
-    <h2>Редагувати блог</h2>
+    <h2>{{ __('messages.editblog') }}  </h2>
 
     <!-- Форма для редагування -->
     <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
 
         <!-- Поле для назви -->
         <div style="margin-bottom: 0.5em; display: flex; flex-direction: column;">
-        <label style="margin-bottom: 0.2em" for="title">Назва:</label>
+        <label style="margin-bottom: 0.2em" for="title">{{ __('messages.title') }}:</label>
             <input style="border-radius: 36px; border: 2px solid blue; width: 50%; padding: 5px;" 
             type="text" id="title" name="title" value="{{ old('title', $blog->title) }}" required>
             @error('title') 
@@ -22,7 +22,7 @@
 
         <!-- Поле для змісту -->
         <div style="margin-bottom: 0.5em; display: flex; flex-direction: column;">
-            <label style="margin-bottom: 0.2em" for="content">Зміст</label>
+            <label style="margin-bottom: 0.2em" for="content">{{ __('messages.content1') }}</label>
             <textarea id="content" name="content" style="width: 50%; height: 100px; border: 2px solid blue; 
         border-radius: 10px; padding: 5px;" required>{{ old('content', $blog->content) }}</textarea>
             @error('content') 
@@ -31,7 +31,7 @@
         </div>
 
         <div style="margin-bottom: 0.5em">
-            <label for="image">Зображення:</label>
+            <label for="image">{{ __('messages.image') }}:</label>
             <input type="file" name="image" id="image" class="form-control-file" accept="image/*" onchange="previewImage(event)">
             @error('image') 
                 <span class="text-danger">{{ $message }}</span> 
@@ -42,18 +42,18 @@
          <div id="image-preview" style="display: flex; align-items: center; gap: 20px; margin-bottom: 0.5em;">
             @if(!empty($blog->image) && file_exists(public_path('storage/blog_images/' . $blog->image)))
             <div style="text-align: center;">
-                <p>До зміна зображення в Блог</p>
+                <p>{{ __('messages.before_changing_the_image_in_the_blog') }}</p>
                 <img src="{{ asset('storage/blog_images/' . $blog->image) }}" alt="Зображення до" 
                     style="max-width: 500px; height: auto; border-radius: 10px; border: 5px solid red;">
             </div>
             @else
                 <div style="text-align: center;">
-                    <p style="color: gray;">Немає зображення в Блог</p>
+                    <p style="color: gray;">{{ __('messages.emplyimage') }}</p>
                 </div>
             @endif
 
             <div style="text-align: center;">
-                <p>Зміна зображення на нову</p>
+                <p>{{ __('messages.changing_the_image_to_a_new_one') }}</p>
                 <img id="preview" src="#" alt="Вибране зображення" 
                     style="max-width: 500px; height: auto; border-radius: 10px; border: 5px solid blue; display: none;">
             </div>
@@ -62,7 +62,7 @@
 
         <!-- Поле для дати публікації -->
         <div style="margin-bottom: 0.5em">
-            <label for="publish_date">Дата публікації</label>
+            <label for="publish_date">{{ __('messages.publish_date') }}</label>
             <input type="date" id="publish_date" name="publish_date" value="{{ old('publish_date', $blog->publish_date) }}" required>
             <label for="publish_date">{{ old('publish_date', $blog->publish_date) }}</label>
             @error('publish_date') 
@@ -71,7 +71,7 @@
         </div>
 
         <!-- Кнопка -->
-        <button type="submit">Оновити блог</button>
+        <button type="submit">{{ __('messages.update_blog') }}</button>
     </form>
 
     <!-- JavaScript -->

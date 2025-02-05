@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">{{ __('messages.email') }}</label>
+                    <label for="email" class="form-label">Email</label>
                     <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" 
                     id="email" placeholder="Email" value="{{ old('email') }}">
                     @error('email')

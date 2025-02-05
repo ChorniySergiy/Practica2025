@@ -3,9 +3,9 @@
 @section('title', 'Home page')
 
 @section('content')
-    <h1>Forgot password</h1>
+    <h1>{{ __('messages.forgot_password') }}</h1>
 
-    <p>Введите свій email для отримання посилания для сброс паролу</p>
+    <p>{{ __('messages.forgot_password_link') }}</p>
 
     <form action="{{ route('password.email') }}" method="post">
     @csrf
@@ -21,7 +21,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.send') }}</button>
         
     </form>
 

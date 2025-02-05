@@ -6,12 +6,12 @@
     @if($blog)
         <h1>{{ $blog->title }}</h1>
         
-        <p><strong>Автор:</strong> {{ $blog->author->name }}</p> 
+        <p><strong>{{ __('messages.author') }}:</strong> {{ $blog->author->name }}</p> 
 
-        <p><strong>Дата створення:</strong> 
+        <p><strong>{{ __('messages.creation_date') }}:</strong> 
         {{ $blog->created_at->format('d M, Y') }}</p> 
         
-        <p><strong>Дата випуск:</strong> 
+        <p><strong>{{ __('messages.publish_date') }}:</strong> 
         {{ \Carbon\Carbon::parse($blog->publish_date)->format('d M, Y') }}</p> 
         
         <div class="blog-item" style="display: flex; margin-bottom: 20px;">
@@ -21,12 +21,12 @@
                     <img src="{{ asset('storage/blog_images/' . $blog->image) }}" alt="Зображення" style="width: 150px; height: auto;">
                 </div>
                 <div class="blog-content">
-                    <h3 style="text-align:center">Контент:</h3>
+                    <h3 style="text-align:center">{{ __('messages.content') }}:</h3>
                     <p>{{ $blog->content }}</p>
                 </div>
             @else
                 <div class="blog-content" style="flex: 1;">
-                    <h3 style="text-align:center">Контент:</h3>
+                    <h3 style="text-align:center">{{ __('messages.content') }}:</h3>
                     <p>{{ $blog->content }}</p>
                 </div>
             @endif
@@ -34,17 +34,17 @@
 
 
     @else
-        <p>Blog not found.</p>
+        <p>{{ __('messages.blog_not_found') }}.</p>
     @endif
 
     <form action="{{ url()->previous() }}" method="get">
-        <button type="submit" class="btn btn-primary">Back to Blogs</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.back_to_blogs') }}</button>
     </form>
 
     <h3><center>Коментар</center></h3>
 
     @if($blog->comments->isEmpty())
-    <p>Пока немає комент. Ви може буди першій комент в ці блог</p>
+    <p>{{ __('messages.no_comments_yet') }}</p>
     @endif
     @foreach ($blog->comments as $comment)
         <div class="comment">
@@ -59,21 +59,21 @@
         <input type="hidden" name="blog_id" value="{{ $blog->id }}">
 
         <div class="form-group">
-            <label for="name">Твій Ім'я:</label>
+            <label for="name">{{ __('messages.уour_name') }}:</label>
             <input type="text" name="name" id="name" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label for="email">Твій Email:</label>
+            <label for="email">{{ __('messages.your_email') }}:</label>
             <input type="email" name="email" id="email" class="form-control" required>
         </div>
 
         <div class="form-group" style="margin-bottom: 0.5em;">
-            <label for="content">Комент:</label>
+            <label for="content">{{ __('messages.comments') }}:</label>
             <textarea name="content" id="content" class="form-control" rows="3" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Відправить комент</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.post_a_comment') }}</button>
     </form>
 
 @endsection

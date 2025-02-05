@@ -5,7 +5,7 @@
 @section('content')
    <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h1>Reset password form</h1>
+            <h1>{{ __('messages.reset_password_form') }}</h1>
 
             <form action="{{ route('password.update') }}" method="post">
                 @csrf
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">{{ __('messages.password') }}</label>
                     <input name="password" type="password"
                     class="form-control  @error('password') is-invalid @enderror"
                      id="password" placeholder="Password">
@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Confirm password</label>
+                    <label for="password_confirmation" class="form-label">{{ __('messages.password_confirmation') }}</label>
                     <input name="password_confirmation" type="password"
                     class="form-control" id="password_confirmation" placeholder="Confirm password">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Reset password</button>
+                <button type="submit" class="btn btn-primary">{{ __('messages.reset_password') }}</button>
 
             </form>
         </div>
