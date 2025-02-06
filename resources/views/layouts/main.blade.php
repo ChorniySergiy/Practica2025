@@ -47,6 +47,16 @@
         </ul>
 
         <!-- Перемикач мови -->
+        <ul class="navbar-nav mb-2 mb-lg-0 langs">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ route('switchLang', ['locale' => 'en']) }}">🇬🇧 en</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ route('switchLang', ['locale' => 'uk']) }}">🇺🇦 uk</a>
+            </li>
+        </ul>
+
+        <!--
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
                 {{ __('messages.language') }}
@@ -56,6 +66,7 @@
                 <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'uk']) }}">🇺🇦 Українська</a></li>
             </ul>
         </li>
+        -->
       </div>
     </div>
   </nav>
