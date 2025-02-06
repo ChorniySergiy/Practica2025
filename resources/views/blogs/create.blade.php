@@ -3,7 +3,7 @@
 @section('title', 'Home page')
 
 @section('content')
-    <h2>{{ __('messages.сreate_a_New_Blog') }}Create a New Blog</h2>
+    <h2>{{ __('messages.сreate_a_New_Blog') }}</h2>
 
     <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
