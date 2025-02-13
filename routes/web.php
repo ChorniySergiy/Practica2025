@@ -16,13 +16,15 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/', [BlogController::class, 'welcome'])->name('home');
 
 //Мультиязіковий мова
-Route::get('/lang/{locale}', function ($locale) {
+Route::get('/switch-language/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'uk'])) {
+        Session::forget('locale');
         Session::put('locale', $locale);
         App::setLocale($locale);
     }
     return redirect()->back();
 })->name('switchLang');
+
 
 // Маршрути для авторизованих і перевірених користувачів
 Route::middleware(['auth'])->group(function () {

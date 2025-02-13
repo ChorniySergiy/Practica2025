@@ -63,13 +63,14 @@
         <!-- Поле для дати публікації -->
         <div style="margin-bottom: 0.5em">
             <label for="publish_date">{{ __('messages.publish_date') }}</label>
-            <input type="date" id="publish_date" name="publish_date" value="{{ old('publish_date', $blog->publish_date) }}" required>
+            <input type="date" id="publish_date" name="publish_date" 
+                value="{{ old('publish_date', $blog->publish_date ? \Carbon\Carbon::parse($blog->publish_date)->format('Y-m-d') : '') }}" 
+                required>
             <label for="publish_date">{{ old('publish_date', $blog->publish_date) }}</label>
             @error('publish_date') 
                 <span class="text-danger">{{ $message }}</span> 
             @enderror
         </div>
-
         <!-- Кнопка -->
         <button type="submit">{{ __('messages.update_blog') }}</button>
     </form>

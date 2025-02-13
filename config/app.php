@@ -123,4 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    //Через мултимовления!
+    'locale' => env('APP_LOCALE', 'uk'),
+    'fallback_locale' => 'uk',
+
 ];

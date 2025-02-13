@@ -25,7 +25,7 @@
             <input name="remember" class="form-check-input" 
             type="checkbox" id="remember">
             <label class="form-check-label" for="remember">
-            {{ __('messages.Запамятати мене') }}
+            {{ __('messages.remember_me') }}
             </label>
         </div>
 
