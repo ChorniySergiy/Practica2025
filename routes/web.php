@@ -4,6 +4,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 
+use App\Http\Controllers\LanguageController;
+
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,18 +14,26 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
-// Головна сторінка (відображає всі блоги, випущені сьогодні або раніше)
-Route::get('/', [BlogController::class, 'welcome'])->name('home');
 
 //Мультиязіковий мова
-Route::get('/switch-language/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'uk'])) {
+Route::get('/lang/{locale}', [LanguageController::class, 'switchLang'])->name('switchLang');
+
+/*Route::get('/{locale}/messages.php', function ($locale) {
+    if (in_array($locale, ['en', 'ua'])) {
+        var_dump(Session::get('locale')); 
+        exit;
         Session::forget('locale');
         Session::put('locale', $locale);
         App::setLocale($locale);
     }
+    //dd(session('locale')); 
+    
     return redirect()->back();
-})->name('switchLang');
+})->name('switchLang');*/
+
+// Головна сторінка (відображає всі блоги, випущені сьогодні або раніше)
+Route::get('/', [BlogController::class, 'welcome'])->name('home');
+
 
 
 // Маршрути для авторизованих і перевірених користувачів

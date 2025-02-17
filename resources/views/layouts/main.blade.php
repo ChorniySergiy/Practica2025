@@ -54,7 +54,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="languageDropdown">
                   <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'en']) }}">🇬🇧 English</a></li>
-                  <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'uk']) }}">🇺🇦 Українська</a></li>
+                  <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'ua']) }}">🇺🇦 Українська</a></li>
               </ul>
           </li>
       </ul>
@@ -66,7 +66,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'en']) }}">🇬🇧 English</a></li>
-                <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'uk']) }}">🇺🇦 Українська</a></li>
+                <li><a class="dropdown-item" href="{{ route('switchLang', ['locale' => 'uc']) }}">🇺🇦 Українська</a></li>
             </ul>
         </li>
         -->
